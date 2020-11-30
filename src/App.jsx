@@ -22,6 +22,10 @@ export const App = () => {
     setTodoText("");
   };
 
+  const onKeyPress = (event) => {
+    return event.which === 13 && onClickAdd();
+  }
+
   const onClickIncompleteDelete = (index) => {
     const new_incomplete_todos = [...incompleteTodos];
     new_incomplete_todos.splice(index, 1);
@@ -56,6 +60,7 @@ export const App = () => {
         onChangeTodoText={onChangeTodoText}
         onClickAdd={onClickAdd}
         disabled={incompleteTodos.length >= 8}
+        onKeyPress={(event) => onKeyPress(event)}
       />
       {incompleteTodos.length >= 8 && (
         <p style={{ color: "red", marginLeft: "15px" }}>
